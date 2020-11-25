@@ -1,0 +1,28 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+storage:
+  s3:
+    secure: false
+    accesskey: N724GJ0IBJVLWTN98LE8
+    secretkey: ofqokX2VBsNne4wx5jPbKMcGWtzADG9EiG09gzMp
+    region: US
+    regionendpoint: http://192.168.70.44:7480
+    bucket: my-new-bucket
+  cache:
+    blobdescriptor: inmemory
+    #filesystem:
+    #rootdirectory: /var/lib/registry
+  delete:
+    enabled: true #启用删除，允许用户删除镜像 
+http:
+  addr: :5000
+  headers:
+    X-Content-Type-Options: [nosniff]
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+
